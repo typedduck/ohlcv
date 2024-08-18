@@ -1,8 +1,8 @@
 # OHLCV Command Line Interface
 
 ![Build Status](https://img.shields.io/github/actions/workflow/status/typedduck/ohlcv/rust.yml)
-[![Crates.io](https://img.shields.io/crates/v/kamo-macros)](https://crates.io/crates/ohlcv-ctl)
-[![Crates.io](https://img.shields.io/crates/d/kamo-macros)](https://crates.io/crates/ohlcv-ctl)
+[![Crates.io](https://img.shields.io/crates/v/ohlcv-ctl)](https://crates.io/crates/ohlcv-ctl)
+[![Crates.io](https://img.shields.io/crates/d/ohlcv-ctl)](https://crates.io/crates/ohlcv-ctl)
 
 The OHLCV command line interface is a tool for downloading historical OHLCV
 (Open, High, Low, Close, Volume) data from various cryptocurrency exchanges.

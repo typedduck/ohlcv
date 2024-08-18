@@ -1,8 +1,8 @@
 # OHLCV
 
 ![Build Status](https://img.shields.io/github/actions/workflow/status/typedduck/ohlcv/rust.yml)
-[![Crates.io](https://img.shields.io/crates/v/kamo)](https://crates.io/crates/ohlcv)
-[![Crates.io](https://img.shields.io/crates/d/kamo)](https://crates.io/crates/ohlcv)
+[![Crates.io](https://img.shields.io/crates/v/ohlcv)](https://crates.io/crates/ohlcv)
+[![Crates.io](https://img.shields.io/crates/d/ohlcv)](https://crates.io/crates/ohlcv)
 
 OHLCV is a library and a command line tool for downloading historical OHLCV
 (Open, High, Low, Close, Volume) data from various cryptocurrency exchanges. The

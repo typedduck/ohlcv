@@ -20,13 +20,13 @@ production use. This is the initial upload defining the project structure.
 
 **OHLCV**:
 
-[![Crates.io](https://img.shields.io/crates/v/kamo)](https://crates.io/crates/ohlcv)
-[![Crates.io](https://img.shields.io/crates/d/kamo)](https://crates.io/crates/ohlcv)
+[![Crates.io](https://img.shields.io/crates/v/ohlcv)](https://crates.io/crates/ohlcv)
+[![Crates.io](https://img.shields.io/crates/d/ohlcv)](https://crates.io/crates/ohlcv)
 
 **OHLCV-ctl**:
 
-[![Crates.io](https://img.shields.io/crates/v/kamo-macros)](https://crates.io/crates/ohlcv-ctl)
-[![Crates.io](https://img.shields.io/crates/d/kamo-macros)](https://crates.io/crates/ohlcv-ctl)
+[![Crates.io](https://img.shields.io/crates/v/ohlcv-ctl)](https://crates.io/crates/ohlcv-ctl)
+[![Crates.io](https://img.shields.io/crates/d/ohlcv-ctl)](https://crates.io/crates/ohlcv-ctl)
 
 ## Features
 
