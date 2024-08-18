@@ -1,0 +1,34 @@
+[package]
+name = "ohlcv-ctl"
+version = "0.1.0"
+edition = "2021"
+license = "MIT OR Apache-2.0"
+authors = ["TypedDuck <typedduck@posteo.net>"]
+homepage = "https://github.com/typedduck/ohlc"
+repository = "https://github.com/typedduck/ohlc"
+description = "Data collector library for fetching, analyzing, predicting and charting time series data (OHLC) of cryptocurrencies from various exchanges"
+categories = [
+    "command-line-utilities",
+    "cryptography::cryptocurrencies",
+    "finance",
+]
+keywords = ["cryptocurrency", "exchange", "finance", "ohlcv", "time-series"]
+readme = "README.md"
+include = ["LICENSE-*", "README.md", "CHANGELOG.md", "Cargo.toml", "/src"]
+
+[package.metadata.docs.rs]
+all-features = true
+rustdoc-args = ["--cfg", "docsrs"]
+
+[lints.clippy]
+pedantic = "warn"
+cargo = "warn"
+style = "warn"
+complexity = "warn"
+perf = "warn"
+correctness = "warn"
+suspicious = "warn"
+nursery = "warn"
+
+[dependencies]
+ohlcv = { version = "0.0.0", path = "../ohlcv" }
