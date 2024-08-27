@@ -137,7 +137,6 @@ mod tests {
         let _serialized = SERIALIZED.lock().unwrap();
         std::env::remove_var("OHLCV_TEST_PASSWORD");
         let creds = Credentials::new("test");
-        dbg!(&creds);
         assert_eq!(creds.username(), "test");
         assert!(!creds.has_password());
 
