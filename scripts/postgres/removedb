@@ -1,0 +1,4 @@
+#!/bin/bash -i
+
+docker rm ohlcv-postgres
+docker volume rm ohlcv-postgres-data

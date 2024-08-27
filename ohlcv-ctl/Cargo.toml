@@ -1,6 +1,6 @@
 [package]
 name = "ohlcv-ctl"
-version = "0.1.0"
+version = "0.0.1"
 edition = "2021"
 license = "MIT OR Apache-2.0"
 authors = ["TypedDuck <typedduck@posteo.net>"]
@@ -30,5 +30,27 @@ correctness = "warn"
 suspicious = "warn"
 nursery = "warn"
 
+[features]
+default = ["mysql", "postgres", "sqlite"]
+mysql = ["ohlcv/mysql"]
+postgres = ["ohlcv/postgres"]
+sqlite = ["ohlcv/sqlite"]
+
 [dependencies]
-ohlcv = { version = "0.0.0", path = "../ohlcv" }
+clap = { version = "4.5.11", features = ["cargo"] }
+inquire = "0.7.5"
+serde = { version = "1.0.208", features = ["derive"] }
+tokio = { version = "1.39.2", features = ["macros", "rt-multi-thread"] }
+toml = "0.8.16"
+tracing = { version = "0.1.40", features = [
+    "release_max_level_info",
+    "max_level_trace",
+] }
+tracing-subscriber = "0.3.18"
+
+[dependencies.ohlcv]
+version = "0.0.1"
+path = "../ohlcv"
+optional = true
+default-features = false
+features = ["exchange"]

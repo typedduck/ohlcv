@@ -1,0 +1,4 @@
+#!/bin/bash -i
+
+docker rm ohlcv-mysql
+docker volume rm ohlcv-mysql-data

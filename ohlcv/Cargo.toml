@@ -1,6 +1,6 @@
 [package]
 name = "ohlcv"
-version = "0.0.0"
+version = "0.0.1"
 edition = "2021"
 license = "MIT OR Apache-2.0"
 authors = ["TypedDuck <typedduck@posteo.net>"]
@@ -10,14 +10,7 @@ description = "Data collector library for fetching, analyzing, predicting and ch
 categories = ["cryptography::cryptocurrencies", "finance"]
 keywords = ["cryptocurrency", "exchange", "finance", "ohlcv", "time-series"]
 readme = "README.md"
-include = [
-    "LICENSE-*",
-    "README.md",
-    "CHANGELOG.md",
-    "Cargo.toml",
-    "/src",
-    "/templates",
-]
+include = ["LICENSE-*", "README.md", "CHANGELOG.md", "Cargo.toml", "/src"]
 
 [package.metadata.docs.rs]
 all-features = true
@@ -33,4 +26,26 @@ correctness = "warn"
 suspicious = "warn"
 nursery = "warn"
 
+[features]
+default = []
+exchange = []
+mysql = ["dep:sqlx", "sqlx/mysql"]
+postgres = ["dep:sqlx", "sqlx/postgres"]
+sqlite = ["dep:sqlx", "sqlx/sqlite", "sqlx/migrate"]
+
 [dependencies]
+rust_decimal = "1.35.0"
+serde = { version = "1.0.204", features = ["derive"] }
+slugify = "0.1.0"
+sqlx = { version = "0.8.0", features = [
+    "macros",
+    "runtime-tokio",
+    "rust_decimal",
+    "time",
+], default-features = false, optional = true }
+time = { version = "0.3.36", features = ["serde"] }
+tokio = { version = "1.39.2", features = ["macros", "rt-multi-thread"] }
+tracing = { version = "0.1.40", features = [
+    "release_max_level_info",
+    "max_level_trace",
+] }

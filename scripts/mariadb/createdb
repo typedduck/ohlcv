@@ -1,0 +1,15 @@
+#!/bin/bash -i
+
+docker volume inspect "ohlcv-mariadb-data" &>/dev/null
+[ $? -eq 0 ] || docker volume create "ohlcv-mariadb-data"
+
+docker create \
+    --name="ohlcv-mariadb" \
+    --userns="host" \
+    --env-file="mariadb.env" \
+    --publish="127.0.0.1:3306:3306" \
+    --pull="newer" \
+    --restart="never" \
+    --tz="UTC" \
+    --volume="ohlcv-mariadb-data:/var/lib/mysql:Z" \
+    docker.io/mariadb:latest

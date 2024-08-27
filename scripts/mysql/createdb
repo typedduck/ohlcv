@@ -1,0 +1,15 @@
+#!/bin/bash -i
+
+docker volume inspect "ohlcv-mysql-data" &>/dev/null
+[ $? -eq 0 ] || docker volume create "ohlcv-mysql-data"
+
+docker create \
+    --name="ohlcv-mysql" \
+    --userns="host" \
+    --env-file="mysql.env" \
+    --publish="127.0.0.1:3306:3306" \
+    --pull="newer" \
+    --restart="never" \
+    --tz="UTC" \
+    --volume="ohlcv-mysql-data:/var/lib/mysql:Z" \
+    docker.io/mysql:latest

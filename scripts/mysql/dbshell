@@ -1,0 +1,3 @@
+#!/bin/bash -i
+
+docker exec -it ohlcv-mysql mysql -u ohlcv -p ohlcv

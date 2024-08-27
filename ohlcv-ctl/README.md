@@ -13,7 +13,13 @@ The functionality provided by the command line interface is implemented in the
 ## Status
 
 This project is in the early stages of development and is not yet ready for
-production use. This is the initial upload defining the project structure.
+production use.
+
+- [x] Initialize the database schema, command `init`.
+- [x] Drop the database schema, command `drop`.
+- [ ] Download historical OHLCV data, command `fetch`.
+- [ ] Export the data to a CSV or JSON file, command `export`.
+- [ ] Import the data from a CSV or JSON file, command `import`.
 
 ## Command Line Interface
 
@@ -97,7 +103,11 @@ following structure:
 user_agent = "<optional user-agent>"
 
 [database]
-address = "localhost"
+# The type of the database. Supported types are `mysql`, `postgres` and
+# `sqlite`. Which are available depends on the features enabled during
+# compilation.
+type = "mysql"
+host = "localhost"
 database = "ohlcv"
 username = "<ohlcv user>"
 password = "<secret password>"
@@ -108,3 +118,6 @@ symbol = "BTC"
 currency = "USD"
 exchanges = { "Binance" = "BTCUSDC" }
 ```
+
+See the implementation of the database configuration for more details about the
+fields in the `OHLCV` crate.

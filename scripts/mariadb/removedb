@@ -1,0 +1,4 @@
+#!/bin/bash -i
+
+docker rm ohlcv-mariadb
+docker volume rm ohlcv-mariadb-data

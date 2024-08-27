@@ -1,0 +1,21 @@
+user_agent = "curl/8.6.0"
+
+[database]
+type = "postgres"
+host = "localhost"
+database = "ohlcv"
+schema = "cryptos"
+username = "ohlcv"
+password = "ohlcv-password"
+
+[[coins]]
+name = "Bitcoin"
+symbol = "BTC"
+currency = "USD"
+exchanges = { "Binance" = "BTCUSDC", "KuCoin" = "BTCUSDT" }
+
+[[coins]]
+name = "Ethereum"
+symbol = "ETH"
+currency = "USD"
+exchanges = { "Binance" = "ETHUSDC", "KuCoin" = "ETHUSDT" }

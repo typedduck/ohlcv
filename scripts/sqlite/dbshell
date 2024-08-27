@@ -1,0 +1,3 @@
+#!/bin/bash -i
+
+sqlite3 --interactive ohlcv.sqlite

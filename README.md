@@ -28,13 +28,58 @@ production use. This is the initial upload defining the project structure.
 [![Crates.io](https://img.shields.io/crates/v/ohlcv-ctl)](https://crates.io/crates/ohlcv-ctl)
 [![Crates.io](https://img.shields.io/crates/d/ohlcv-ctl)](https://crates.io/crates/ohlcv-ctl)
 
-## Features
+## Data model
 
-The features described here are planned and are not yet implemented.
+The data model mainly consists of the following types:
 
-### Download historical OHLCV data
+- `Candle`: Represents a candlestick in a trading pair.
+- `Coin`: Represents a cryptocurrency and the quote currency.
+- `Currency`: Represents a currency.
+- `Timeframe`: Represents a timeframe of a candlestick.
 
-This feature will be implemented with the first release.
+The data model is designed to be simple and easy to use. For every trading pair
+(`Candle`) consisting of a base currency and a quote currency, there is a
+corresponding table in the database. The table name is constructed from the base
+currency, the quote currency, and a prefix. The prefix is the same for all
+tables and is used to group the tables together.
+
+In the table there the candles are aggregated for all timeframes. The columns of
+the table are the following:
+
+- `time_stamp`: The start time of the candle.
+- `time_frame`: The timeframe of the candle.
+- `sources`: The number of sources the candle was downloaded from.
+- `open`: The opening price of the candle.
+- `high`: The highest price of the candle.
+- `low`: The lowest price of the candle.
+- `close`: The closing price of the candle.
+- `volume`: The volume of the candle.
+
+The primary key of the table is the combination of `time_stamp` and
+`time_frame`.
+
+## Database access
+
+The library supports the following databases:
+
+- SQLite
+- PostgreSQL
+- MySQL/MariaDB
+
+The database can be accessed using the `DbType` type. The tables defining the
+candles can be initialized and dropped using the `init_schema` and `drop_schema`
+methods. All data definition is done by the `root` user. The normal user only
+has access to the data. Exception to this is SQLite, where no user management is
+needed.
+
+See the implementation of the database configuration for more details.
+
+The `Database` trait provides methods to interact with the database. The trait
+is implemented for the [`DbType`] type.
+
+## Download historical OHLCV data
+
+**This feature is not yet implemented.**
 
 The library can download historical OHLCV data from various cryptocurrency
 exchanges. The data is stored in a database and can be queried using SQL. The
@@ -95,6 +140,12 @@ exchanges in the configuration file for the trading pair.
 
 There will be three attempts to download the data with increasing time between
 attempts for a trading pair for an exchange.
+
+## Helper scripts
+
+In the `scripts` directory there are helper scripts that can be used to
+set up the supported databases. All scripts, except for the SQLite database,
+install the required dependencies as docker containers.
 
 ## License
 

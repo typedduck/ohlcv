@@ -1,0 +1,16 @@
+#!/bin/bash -i
+
+docker volume inspect "ohlcv-postgres-data" &>/dev/null
+[ $? -eq 0 ] || docker volume create "ohlcv-postgres-data"
+
+docker create \
+    --name="ohlcv-postgres" \
+    --userns="host" \
+    --env-file="postgres.env" \
+    --publish="127.0.0.1:5432:5432" \
+    --pull="newer" \
+    --restart="never" \
+    --tz="UTC" \
+    --volume="ohlcv-postgres-data:/var/lib/postgresql/data:Z" \
+    --volume="$(pwd)/initdb:/docker-entrypoint-initdb.d:Z" \
+    docker.io/postgres:latest

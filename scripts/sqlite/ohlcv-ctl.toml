@@ -1,0 +1,17 @@
+user_agent = "curl/8.6.0"
+
+[database]
+type = "sqlite"
+database = "ohlcv.sqlite"
+
+[[coins]]
+name = "Bitcoin"
+symbol = "BTC"
+currency = "USD"
+exchanges = { "Binance" = "BTCUSDC", "KuCoin" = "BTCUSDT" }
+
+[[coins]]
+name = "Ethereum"
+symbol = "ETH"
+currency = "USD"
+exchanges = { "Binance" = "ETHUSDC", "KuCoin" = "ETHUSDT" }

@@ -1,0 +1,5 @@
+CREATE USER ohlcv WITH PASSWORD 'ohlcv-password';
+CREATE DATABASE ohlcv;
+\connect ohlcv;
+CREATE SCHEMA cryptos AUTHORIZATION ohlcv;
+GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA cryptos TO ohlcv;
