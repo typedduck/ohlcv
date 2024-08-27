@@ -112,7 +112,13 @@ impl TryFrom<&crate::database::postgres::DbConfig> for Credentials {
 
 #[cfg(test)]
 mod tests {
+    use std::sync::Mutex;
+
+    use once_cell::sync::Lazy;
+
     use super::*;
+
+    static SERIALIZED: Lazy<Mutex<()>> = Lazy::new(Mutex::default);
 
     const USERNAMES: &[(&str, &str)] = &[
         ("test", "OHLCV_TEST_PASSWORD"),
@@ -125,7 +131,13 @@ mod tests {
 
     #[test]
     fn new() {
+        // Must be executed in a single threaded context, to avoid side effects
+        // when the tests are run in parallel. `std::env::remove_var` and
+        // `set_var` are not thread-safe.
+        let _serialized = SERIALIZED.lock().unwrap();
+        std::env::remove_var("OHLCV_TEST_PASSWORD");
         let creds = Credentials::new("test");
+        dbg!(&creds);
         assert_eq!(creds.username(), "test");
         assert!(!creds.has_password());
 
@@ -140,6 +152,11 @@ mod tests {
 
     #[test]
     fn with_password() {
+        // Must be executed in a single threaded context, to avoid side effects
+        // when the tests are run in parallel. `std::env::remove_var` and
+        // `set_var` are not thread-safe.
+        let _serialized = SERIALIZED.lock().unwrap();
+        std::env::remove_var("OHLCV_TEST_PASSWORD");
         let envar = "OHLCV_TEST_PASSWORD";
         std::env::set_var(envar, "password2");
 
@@ -152,6 +169,11 @@ mod tests {
     #[cfg(feature = "mysql")]
     #[test]
     fn from_mysql() {
+        // Must be executed in a single threaded context, to avoid side effects
+        // when the tests are run in parallel. `std::env::remove_var` and
+        // `set_var` are not thread-safe.
+        let _serialized = SERIALIZED.lock().unwrap();
+        std::env::remove_var("OHLCV_TEST_PASSWORD");
         let envar = "OHLCV_TEST_PASSWORD";
         std::env::set_var(envar, "password2");
 
