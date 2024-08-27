@@ -1,11 +1,11 @@
 [package]
 name = "ohlcv-ctl"
-version = "0.0.2"
+version = "0.0.3"
 edition = "2021"
 license = "MIT OR Apache-2.0"
 authors = ["TypedDuck <typedduck@posteo.net>"]
-homepage = "https://github.com/typedduck/ohlc"
-repository = "https://github.com/typedduck/ohlc"
+homepage = "https://github.com/typedduck/ohlcv"
+repository = "https://github.com/typedduck/ohlcv"
 description = "Data collector library for fetching, analyzing, predicting and charting time series data (OHLC) of cryptocurrencies from various exchanges"
 categories = [
     "command-line-utilities",

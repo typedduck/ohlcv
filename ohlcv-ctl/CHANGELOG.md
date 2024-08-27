@@ -1,5 +1,10 @@
 # Change Log
 
+## [0.0.3](https://github.com/typedduck/ohlcv/tree/ohlcv-ctl-v0.0.3) - 2024-08-27
+
+- Fix link to GitHub repository.
+- Updated dependencies to `ohlc` v0.0.3.
+
 ## [0.0.2](https://github.com/typedduck/ohlcv/tree/ohlcv-ctl-v0.0.2) - 2024-08-27
 
 - Updated dependencies to `ohlc` v0.0.2.
